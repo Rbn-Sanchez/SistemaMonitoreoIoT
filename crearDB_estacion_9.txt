@@ -1,0 +1,41 @@
+CREATE DATABASE IF NOT EXISTS estacion_9;
+USE estacion_9;
+CREATE TABLE IF NOT EXISTS Persona(
+    idPersona INT NOT NULL AUTO_INCREMENT,
+    nombre VARCHAR(40) NOT NULL,
+    apellido VARCHAR(40),
+    estadoDomicilio VARCHAR(30),
+    fechaNacimiento DATE,
+    genero VARCHAR(10),
+    PRIMARY KEY(idPersona)
+);
+CREATE TABLE IF NOT EXISTS Temperatura(
+    idTemperatura INT NOT NULL AUTO_INCREMENT,
+    fecha DATE NOT NULL,
+    hora TIME,
+    valor FLOAT NOT NULL,
+    idPersona INT NOT NULL,
+    PRIMARY KEY(idTemperatura),
+    FOREIGN KEY(idPersona)
+        REFERENCES Persona (idPersona)
+);
+CREATE TABLE IF NOT EXISTS Oximetria(
+    idOximetria INT NOT NULL AUTO_INCREMENT,
+    fecha DATE NOT NULL,
+    hora TIME,
+    valor FLOAT NOT NULL,
+    idPersona INT NOT NULL,
+    PRIMARY KEY(idOximetria),
+    FOREIGN KEY(idPersona)
+        REFERENCES Persona (idPersona)
+);
+CREATE TABLE IF NOT EXISTS Pulso(
+    idPulso INT NOT NULL AUTO_INCREMENT,
+    fecha DATE NOT NULL,
+    hora TIME,
+    valor FLOAT NOT NULL,
+    idPersona INT NOT NULL,
+    PRIMARY KEY(idPulso),
+    FOREIGN KEY(idPersona)
+        REFERENCES Persona (idPersona)
+);
